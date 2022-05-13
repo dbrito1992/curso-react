@@ -22,8 +22,14 @@ module.exports = {
     },
     ecmaVersion: 'latest',
     sourceType: 'module',
+    requireConfigFile: false,
+    babelOptions: {
+      plugins: [
+        "@babel/plugin-proposal-class-properties",
+      ],
+    },
   },
-  plugins: ['react', 'prettier', 'react-hooks'],
+  plugins: ['react', 'prettier', 'react-hooks', "@babel"],
   settings: {
     react: {
       version: 'detect',
