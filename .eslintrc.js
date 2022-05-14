@@ -22,14 +22,8 @@ module.exports = {
     },
     ecmaVersion: 'latest',
     sourceType: 'module',
-    requireConfigFile: false,
-    babelOptions: {
-      plugins: [
-        "@babel/plugin-proposal-class-properties",
-      ],
-    },
   },
-  plugins: ['react', 'prettier', 'react-hooks', "@babel"],
+  plugins: ['react', 'prettier', 'react-hooks'],
   settings: {
     react: {
       version: 'detect',
@@ -37,6 +31,5 @@ module.exports = {
   },
   rules: {
     'react/react-in-jsx-scope': 'off',
-    'prettier/prettier': 'off'
   },
 };
