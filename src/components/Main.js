@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
-
-import { FaPlus, FaEdit, FaWindowClose } from 'react-icons/fa';
-
+import Form from './Form';
+import Tarefas from './Tarefas';
 import './Main.css';
 
 export default class Main extends Component {
-  state = {
-    novaTarefa: '',
-    tarefas: [],
-    index: -1,
-  };
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      novaTarefa: '',
+      tarefas: [],
+      index: -1,
+    };
+
+    this.handleEdit = this.handleEdit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+  }
   componentDidMount() {
     const tarefas = JSON.parse(localStorage.getItem('tarefas'));
 
@@ -48,12 +53,6 @@ export default class Main extends Component {
     }
   };
 
-  handleChange = (e) => {
-    this.setState({
-      novaTarefa: e.target.value,
-    });
-  };
-
   handleDelete(e, index) {
     const { tarefas } = this.state;
     const novasTarefas = [...tarefas];
@@ -71,35 +70,29 @@ export default class Main extends Component {
     });
   }
 
+  handleChange = (e) => {
+    this.setState({
+      novaTarefa: e.target.value,
+    });
+  };
+
   render() {
     const { novaTarefa, tarefas } = this.state;
     return (
       <div className="main">
         <h1>Lista de Tarefas</h1>
-        <form onSubmit={this.handleSubmit} action="#" className="form">
-          <input type="text" onChange={this.handleChange} value={novaTarefa} />
-          <button type="submit">
-            <FaPlus />
-          </button>
-        </form>
 
-        <ul className="tarefas">
-          {tarefas.map((tarefa, index) => (
-            <li key={tarefa}>
-              {tarefa}
-              <div>
-                <FaEdit
-                  onClick={(e) => this.handleEdit(e, index)}
-                  className="edit"
-                />
-                <FaWindowClose
-                  onClick={(e) => this.handleDelete(e, index)}
-                  className="delete"
-                />
-              </div>
-            </li>
-          ))}
-        </ul>
+        <Form
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          novaTarefa={novaTarefa}
+        />
+
+        <Tarefas
+          handleEdit={this.handleEdit}
+          handleDelete={this.handleDelete}
+          tarefas={tarefas}
+        />
       </div>
     );
   }

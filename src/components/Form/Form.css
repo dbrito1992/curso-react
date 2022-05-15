@@ -1,0 +1,29 @@
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.form input[type='text'] {
+  height: 40px;
+  width: 100%;
+  max-width: 300px;
+  font-size: 20px;
+  padding: 0 20px;
+  border: 1px solid #ccc;
+}
+
+.form button {
+  height: 40px;
+  width: 100%;
+  max-width: 100px;
+  border: none;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(249, 72, 72, 0.97);
+  color: #fff;
+}
