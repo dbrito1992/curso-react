@@ -38,7 +38,12 @@ export default class Main extends Component {
     let { novaTarefa } = this.state;
     novaTarefa = novaTarefa.trim();
 
+    // VERIFICA SE O CAMPO VEM VÁZIO
+    if (novaTarefa === '') return;
+
+    // VERIFICA SE O CAMPO É REPETIDO
     if (tarefas.indexOf(novaTarefa) !== -1) return;
+
     const novasTarefas = [...tarefas];
     if (index === -1) {
       this.setState({
